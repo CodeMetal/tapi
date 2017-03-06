@@ -24,9 +24,12 @@ public class TestCaseDetails implements Serializable{
 	/*API End point URI (Excluding the host address)*/
 	private String endPointURI;
 	
-	/*API End point Host address (either domain name or IP+port)*/
+	/*API End point Host address (either domain name or IP)*/
 	private String endPointHost;
 	
+	/*API End point Port*/
+	private int endPointPort;	
+
 	/*HTTP Request Method for the API*/
 	private RequestMethod requestMethod;
 	
@@ -44,6 +47,9 @@ public class TestCaseDetails implements Serializable{
 	
 	/*Output of a TestCase*/
 	private TestCaseResult result;
+	
+	/*Flag for http*/
+	boolean isHttp;
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -128,7 +134,21 @@ public class TestCaseDetails implements Serializable{
 	public void setResult(TestCaseResult result) {
 		this.result = result;
 	}
+
+	public boolean isHttp() {
+		return isHttp;
+	}
+
+	public void setHttp(boolean isHttp) {
+		this.isHttp = isHttp;
+	}
 	
-	
+	public int getEndPointPort() {
+		return endPointPort;
+	}
+
+	public void setEndPointPort(int endPointPort) {
+		this.endPointPort = endPointPort;
+	}
 	
 }
