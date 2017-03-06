@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  */
 
-public class TestCase implements Serializable{
+public class TestCaseDetails implements Serializable{
 
 	private static final long serialVersionUID = 102L;
 	
