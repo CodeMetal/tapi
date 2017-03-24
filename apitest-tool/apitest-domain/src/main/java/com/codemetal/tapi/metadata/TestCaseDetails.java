@@ -2,6 +2,7 @@ package com.codemetal.tapi.metadata;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TestCaseDetails implements Serializable{
 
 	private static final long serialVersionUID = 102L;
+	
+	/*Mongodb id for the TestCaseDetails*/
+	@Id
+    public String id;
 	
 	/*Scenario Name for the TestCase*/
 	private String scenarioName;
