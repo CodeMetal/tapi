@@ -32,9 +32,19 @@
 		<module>metadata/metadata-repository</module>
 		<module>metadata/metadata-service</module>
 		<module>metadata/metadata-controller</module>
+		<module>execution</module>
 		<module>execution/execution-repository</module>
 		<module>execution/execution-service</module>
 		<module>execution/execution-controller</module>
+
+		<module>testcase-ui</module>
+		
+		<module>data-mysql</module>
+		<module>data-mysql/data-mysql-domain</module>
+		<module>data-mysql/data-mysql-repository</module>
+		<module>data-mysql/data-mysql-service</module>
+		<module>data-mysql/data-mysql-controller</module>
+
 		
 		
 	</modules>
@@ -105,10 +115,6 @@
 			<artifactId>mockito-core</artifactId>
 			<version>2.2.7</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
 	</dependencies>

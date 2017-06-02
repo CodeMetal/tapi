@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.codemetal.tapi.exception.RequiredFieldException;
 import com.codemetal.tapi.metadata.TestSuite;
 import com.codemetal.tapi.metadata.repository.TestSuiteRepository;
 
@@ -20,13 +21,21 @@ public class TestSuiteServiceImpl implements TestSuiteService{
 	@Autowired
 	private TestSuiteRepository testSuiteRepository;
 
+	@Autowired
+	private TestSuiteValidator testSuiteValidator;
+	
+	
 	@Override
 	public TestSuite createTestSuite(TestSuite testSuite) {
+		testSuiteValidator.validateTestSuite(testSuite);
 		return testSuiteRepository.save(testSuite);
 	}
+	
+	
 
 	@Override
 	public TestSuite updateTestSuite(TestSuite testSuite) {
+		testSuiteValidator.validateTestSuite(testSuite);
 		return testSuiteRepository.save(testSuite);
 	}
 
@@ -38,7 +47,7 @@ public class TestSuiteServiceImpl implements TestSuiteService{
 
 	@Override
 	public List<TestSuite> getTestSuites() {
-		return testSuiteRepository.findAll();
+		return (List<TestSuite>)testSuiteRepository.findAll();
 	}
 
 	@Override

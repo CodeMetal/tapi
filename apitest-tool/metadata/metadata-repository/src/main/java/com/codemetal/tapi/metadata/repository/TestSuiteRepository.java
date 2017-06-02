@@ -1,6 +1,8 @@
 package com.codemetal.tapi.metadata.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
 import com.codemetal.tapi.metadata.TestSuite;
 
@@ -9,7 +11,8 @@ import com.codemetal.tapi.metadata.TestSuite;
  * @author santhosh
  *
  */
-public interface TestSuiteRepository extends MongoRepository<TestSuite,String>{
+@Repository
+public interface TestSuiteRepository extends PagingAndSortingRepository<TestSuite,String>{
 	
 	public TestSuite findByName(String name);
 }

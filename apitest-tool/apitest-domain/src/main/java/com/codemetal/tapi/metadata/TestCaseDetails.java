@@ -6,54 +6,65 @@ import org.springframework.data.annotation.Id;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
+
 /**
  * This class represents a TestCase which will be executed as a JUnit testcase
+ * 
  * @author Raghuveer Bhandarkar
  *
  */
 
-public class TestCaseDetails implements Serializable{
+public class TestCaseDetails implements Serializable {
 
 	private static final long serialVersionUID = 102L;
-	
-	/*Mongodb id for the TestCaseDetails*/
-	@Id
-    public String id;
-	
-	/*Scenario Name for the TestCase*/
-	private String scenarioName;
-	
-	/*Scenario Description for the TestCase*/
-	private String scenarioDescription;
-	
-	/*API End point URI (Excluding the host address)*/
-	private String endPointURI;
-	
-	/*API End point Host address (either domain name or IP)*/
-	private String endPointHost;
-	
-	/*API End point Port*/
-	private int endPointPort;	
 
-	/*HTTP Request Method for the API*/
+	/* Mongodb id for the TestCaseDetails */
+	@Id
+	public String id;
+
+	/* Id of the testsuite to which this testcase belongs */
+	public String testSuiteId;
+
+	
+
+	/* Scenario Name for the TestCase */
+	private String scenarioName;
+
+	/* Scenario Description for the TestCase */
+	private String scenarioDescription;
+
+	/* API End point URI (Excluding the host address) */
+	private String endPointURI;
+
+	/* API End point Host address (either domain name or IP) */
+	private String endPointHost;
+
+	/* API End point Port */
+	private int endPointPort;
+
+	/* HTTP Request Method for the API */
 	private RequestMethod requestMethod;
-	
-	/*HTTP Response Type for the API*/
-	private MediaType responseType;
-	
-	/*Request Header for the API*/
+
+	/* HTTP Response Type for the API */
+	private String responseType;
+
+	/* Request Header for the API */
 	private Header requestHeader;
-	
-	/*Flag to indicate if the environment value should take precedence over @endPointHost*/
+
+	/*
+	 * Flag to indicate if the environment value should take precedence
+	 * over @endPointHost
+	 */
 	private boolean shouldOverrideHostAddress;
-	
-	/*Input to a TestCase*/
+
+	/* Input to a TestCase */
 	private TestCaseInput input;
-	
-	/*Output of a TestCase*/
+
+	/* Output of a TestCase */
 	private TestCaseResult result;
-	
-	/*Flag for http*/
+
+	/* Flag for http */
 	boolean isHttp;
 
 	public String getScenarioName() {
@@ -96,11 +107,11 @@ public class TestCaseDetails implements Serializable{
 		this.requestMethod = requestMethod;
 	}
 
-	public MediaType getResponseType() {
+	public String getResponseType() {
 		return responseType;
 	}
 
-	public void setResponseType(MediaType responseType) {
+	public void setResponseType(String responseType) {
 		this.responseType = responseType;
 	}
 
@@ -147,7 +158,7 @@ public class TestCaseDetails implements Serializable{
 	public void setHttp(boolean isHttp) {
 		this.isHttp = isHttp;
 	}
-	
+
 	public int getEndPointPort() {
 		return endPointPort;
 	}
@@ -156,4 +167,20 @@ public class TestCaseDetails implements Serializable{
 		this.endPointPort = endPointPort;
 	}
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getTestSuiteId() {
+		return testSuiteId;
+	}
+
+	public void setTestSuiteId(String testSuiteId) {
+		this.testSuiteId = testSuiteId;
+	}
+
 }

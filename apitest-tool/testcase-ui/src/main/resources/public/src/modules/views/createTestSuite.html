@@ -1,0 +1,20 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Create TestSuite</h3>
+  </div>
+  <div class="panel-body">
+  <div ng-controller="TestSuiteController">
+			<form name = "testsuite-ui">
+				<div>Name: <input type="text" ng-model="name"></div>	
+				<br>
+				
+				<br>
+				<!-- <button type = "button" class="btn btn-primary" ng-click = "createTestSuite()">Create TestSuite</button> -->
+				<button type="button" class="btn btn-primary" ng-click = "saveTestSuite()">Save</button>
+				<button type="button" class="btn btn-primary" ng-click = "testSuiteList()">Cancel</button>
+	<!-- 			<button type = "button" class="btn btn-primary" ng-click = "testSuiteList()">View TestSuites</button> -->
+			</form>
+		</div>
+   </div>
+</div>

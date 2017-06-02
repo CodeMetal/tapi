@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import com.codemetal.tapi.metadata.service.TestSuiteService;
  * @author santhosh
  *
  */
-
+@CrossOrigin
 @RestController
 @RequestMapping(value="/testSuite")
 public class TestSuiteController {
@@ -37,6 +38,7 @@ public class TestSuiteController {
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TestSuite> createTestSuite(@RequestBody TestSuite testSuite){
 		TestSuite testSuiteResp = testSuiteService.createTestSuite(testSuite);
+		
 		return new ResponseEntity<TestSuite>(testSuiteResp, HttpStatus.OK);
 	}
 	

@@ -1,0 +1,13 @@
+server:
+  port: 9090
+  
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopnow
+    username: root
+    password: root
+    platform: POSTGRESQL
+    driver-class-name: com.mysql.jdbc.Driver
+  
+ 
+

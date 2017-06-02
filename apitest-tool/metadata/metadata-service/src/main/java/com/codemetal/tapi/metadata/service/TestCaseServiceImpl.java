@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codemetal.tapi.metadata.TestCaseDetails;
+import com.codemetal.tapi.metadata.TestSuite;
 import com.codemetal.tapi.metadata.repository.TestCaseRepository;
-
+import com.codemetal.tapi.metadata.service.TestCaseService;
 /**
  * 
  * @author santhosh
@@ -20,13 +21,18 @@ public class TestCaseServiceImpl implements TestCaseService{
 	@Autowired
 	TestCaseRepository testCaseRepository;
 	
+	@Autowired
+	TestCaseValidator testCaseValidator;
+	
 	@Override
 	public TestCaseDetails createTestCase(TestCaseDetails testCase) {
+		testCaseValidator.validateTestCase(testCase);
 		return testCaseRepository.save(testCase);
 	}
 
 	@Override
 	public TestCaseDetails updateTestcase(TestCaseDetails testCase) {
+		testCaseValidator.validateTestCase(testCase);
 		return testCaseRepository.save(testCase);
 	}
 
@@ -37,7 +43,10 @@ public class TestCaseServiceImpl implements TestCaseService{
 
 	@Override
 	public List<TestCaseDetails> getTestCases() {
-		return testCaseRepository.findAll();
+		
+		return (List<TestCaseDetails>)testCaseRepository.findAll(); 
+
+		
 	}
 
 }
