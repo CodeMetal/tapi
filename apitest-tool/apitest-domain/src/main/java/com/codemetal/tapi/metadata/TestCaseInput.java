@@ -8,16 +8,16 @@ package com.codemetal.tapi.metadata;
 public class TestCaseInput {
 	
 	/*Input to the API (JSON/XML etc)*/
-	private Object input;
+	private String input;
 	
 	/*HTTP Request Parameters for the API*/
 	private RequestParam param;
 
-	public Object getInput() {
+	public String getInput() {
 		return input;
 	}
 
-	public void setInput(Object input) {
+	public void setInput(String input) {
 		this.input = input;
 	}
 

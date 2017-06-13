@@ -1,5 +1,6 @@
 package com.codemetal.tapi;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.http.HttpEntity;
@@ -11,9 +12,15 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.codemetal.tapi.metadata.TestCaseDetails;
+import com.codemetal.tapi.rest.HttpClientRestProxy.HttpClientRestProxyBuilder;
+import com.codemetal.tapi.rest.RestProxy;
 
 import junit.framework.TestCase;
-
+/**
+ * 
+ * @author Raghuveer Bhandarkar
+ *
+ */
 public class RestApiTestCase extends TestCase{
 	
 	static final String HTTP = "http";
@@ -23,21 +30,23 @@ public class RestApiTestCase extends TestCase{
 	/*Test Case data details */
 	private TestCaseDetails testCaseDetails;
 	
+	private RestProxy restProxy;
+	
 	public RestApiTestCase(TestCaseDetails testCaseDetails){
 		/*Invoke super constructor with test method name (testApi in this case)*/
 		super("testApi");
 		this.testCaseDetails = testCaseDetails;
 	}
 	
-	public void testApi(){
+	/*public void testApi(){
 		RestTemplate restTemplate = new RestTemplate();
 		String url = buildURL();
 		HttpEntity<Object> requestEntity = null;
 		
-		MultiValueMap<String,String> headers = buildRequestHeaders();		
+		Map<String,String> headers = buildRequestHeaders();		
 			
 		
-		/*Build Input for the API*/
+		Build Input for the API
 		if( testCaseDetails.getInput() !=null){
 			Object requestInput = testCaseDetails.getInput().getInput();			
 			requestEntity = new HttpEntity<Object>(requestInput , headers);
@@ -50,6 +59,27 @@ public class RestApiTestCase extends TestCase{
 				convertRequestMethod(testCaseDetails.getRequestMethod()),  
 				requestEntity,	
 				Object.class);
+	}*/
+	
+	public void testApi(){
+		
+		String url = buildURL();
+		
+		Map<String,String> headers = null;
+		if(testCaseDetails.getRequestHeader() !=null){
+			headers= testCaseDetails.getRequestHeader().getHeaders();
+		}
+			
+		RestProxy proxy = new HttpClientRestProxyBuilder(url, testCaseDetails.getRequestMethod())
+									.setHeaders(headers)
+									.setRequestEntity((String)testCaseDetails.getInput().getInput())
+									.build();
+		
+		try {
+			proxy.invoke();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 		
 		
@@ -112,7 +142,7 @@ public class RestApiTestCase extends TestCase{
 	 * Builds a MultiValueMap of Request Headers
 	 * @return
 	 */
-	private MultiValueMap<String,String> buildRequestHeaders(){
+	/*private MultiValueMap<String,String> buildRequestHeaders(){
 		if (testCaseDetails.getRequestHeader() != null){
 			Map<String,String> map = testCaseDetails.getRequestHeader().getHeaders();
 			MultiValueMap<String,String> headers = new LinkedMultiValueMap<String,String>();
@@ -120,5 +150,5 @@ public class RestApiTestCase extends TestCase{
 			return headers;
 		}
 		return null;
-	}
+	}*/
 }
