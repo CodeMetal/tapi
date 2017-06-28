@@ -18,13 +18,12 @@ public class TestCaseRunner {
 		
 		
 		
-	
+		testPost();
 		
 	}
 	
 	private void testget(){
-		HttpMethod hm = con(RequestMethod.GET);
-		System.out.println(hm);
+		
 		
 		TestCaseDetails td = new TestCaseDetails();
 		td.setScenarioName( "Hi");
@@ -47,19 +46,18 @@ public class TestCaseRunner {
 		tc.run();
 	}
 	
-	private void testPost(){
-		HttpMethod hm = con(RequestMethod.GET);
-		System.out.println(hm);
+	private static void testPost(){
+		
 		
 		TestCaseDetails td = new TestCaseDetails();
 		td.setScenarioName( "Hi");
 		td.setHttp(true);
 		td.setEndPointHost("localhost");
-		td.setEndPointURI("authority/findAuthority");
+		td.setEndPointURI("authority/createAuthority");
 		td.setEndPointPort(8090);
 		
 		TestCaseInput in = new TestCaseInput();
-		String input = "";
+		String input = "{\"authorityName\":\"Myauth\",\"phoneNumber\":1111111111,	\"address\":{	\"street\":\"ui1\",	\"postalCode\":35001,	\"city\":\"NA\",\"state\":\"CA\",\"country\":\"US\"	}}";
 		
 		
 		in.setInput(input);
@@ -70,7 +68,7 @@ public class TestCaseRunner {
 		rp.setParams(m);
 		in.setParam(rp);
 		td.setInput(in);
-		td.setRequestMethod(RequestMethod.GET);
+		td.setRequestMethod(RequestMethod.POST);
 		//RestApiTestCase ratc = 
 		TestCase tc = new  RestApiTestCase(td);
 		Header rh = new Header();
@@ -80,7 +78,5 @@ public class TestCaseRunner {
 		tc.run();
 	}
 	
-	private static HttpMethod con(RequestMethod req){
-		return HttpMethod.valueOf(req.name());
-	}
+	
 }

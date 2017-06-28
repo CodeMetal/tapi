@@ -94,7 +94,7 @@ public class TestCaseController {
 
 		input.setParam(rp);
 
-		Object obj = new String("Obj");
+		String obj = new String("Obj");
 		input.setInput(obj);
 		testCaseDet.setInput(input);
 

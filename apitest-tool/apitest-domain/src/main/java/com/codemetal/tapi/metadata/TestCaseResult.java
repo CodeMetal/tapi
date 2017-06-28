@@ -1,5 +1,7 @@
 package com.codemetal.tapi.metadata;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 
 /**
@@ -16,6 +18,9 @@ public class TestCaseResult {
 	
 	/*Expected Response Header for the API*/
 	private Header responseHeader;
+	
+	/*List of Assertions required for asserting the TestCase Results*/
+	private List<AssertionDetails> assertionList;
 
 	public HttpStatus getResponseStatus() {
 		return responseStatus;
@@ -39,6 +44,14 @@ public class TestCaseResult {
 
 	public void setResponseHeader(Header responseHeader) {
 		this.responseHeader = responseHeader;
+	}
+
+	public List<AssertionDetails> getAssertionList() {
+		return assertionList;
+	}
+
+	public void setAssertionList(List<AssertionDetails> assertionList) {
+		this.assertionList = assertionList;
 	}
 	
 	
